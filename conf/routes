@@ -1,3 +1,5 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
+GET         /rooms        controllers.Conference.getRooms
+POST        /rooms        controllers.Conference.addRoom
