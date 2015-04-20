@@ -1,13 +1,14 @@
 package controllers
 
-import db.RoomsDao
-import models.Room
+import db.{TalksDao, RoomsDao}
+import models.{Talk, Room}
 import play.api.libs.json.{JsError, Json}
 import play.api.mvc.{Action, Controller}
 
 object Conference extends Controller {
 
   val roomsDao = new RoomsDao
+  val talksDao = new TalksDao
 
   implicit val roomFormat = Json.format[Room]
 
@@ -20,6 +21,20 @@ object Conference extends Controller {
       errors => BadRequest(JsError.toFlatJson(errors)),
       room => {
         val id = roomsDao.create(room)
+        Created(Json.obj("id" -> id))
+      }
+    )
+  }
+
+  def getTalks = Action {
+    Ok(Json.toJson(talksDao.findAllWithRooms))
+  }
+
+  def addTalk = Action(parse.json) { request =>
+    request.body.validate[Talk].fold(
+      errors => BadRequest(JsError.toFlatJson(errors)),
+      talk => {
+        val id = talksDao.create(talk)
         Created(Json.obj("id" -> id))
       }
     )

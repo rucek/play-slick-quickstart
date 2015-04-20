@@ -3,3 +3,6 @@
 # ~~~~
 GET         /rooms        controllers.Conference.getRooms
 POST        /rooms        controllers.Conference.addRoom
+
+GET         /talks        controllers.Conference.getTalks
+POST        /talks        controllers.Conference.addTalk
