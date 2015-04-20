@@ -9,6 +9,8 @@ object Conference extends Controller {
 
   val roomsDao = new RoomsDao
 
+  implicit val roomFormat = Json.format[Room]
+
   def getRooms = Action {
     Ok(Json.toJson(roomsDao.findAll))
   }
