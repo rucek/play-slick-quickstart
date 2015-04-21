@@ -48,13 +48,13 @@ Adds Slick table mappings and a `DatabaseSchema` trait with queries.
 
 Adds a DAO to create a new room and query existing rooms.
 
-## 05-room-controller
+## 05-rooms-controller
 
 Binds the controller room actions to the DAO methods.
 
 > **Note:** The application won't compile after completing this step. This is on purpose, to show that you need to explicitly add JSON support for your case classes, which is the next step.
 
-## 06-room-controller-json
+## 06-rooms-controller-json
 
 Adds missing JSON support for `Room`.
 
